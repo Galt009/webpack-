@@ -1,0 +1,6 @@
+先 cnpm i webpack-dev-server -D 安装工具
+可这是会提示依赖webpack@^4.0.0 but none was installed
+所以   cnpm i webpack  安装这个
+再 cnpm i webpack-dev-server -D 就ok了
+
+根目录建 webpack.config.js 

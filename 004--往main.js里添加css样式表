@@ -1,0 +1,10 @@
+在与 main.js 同级的 css文件夹里新建样式表，例如 index.css  
+在 main.js 里添加一行代码：import './css/index.css     //文件路径
+然后命令行输入： cnpm i style-loader css-loader -D     //安装 style-loader css-loader
+在 webpack.config.js 里添加：     
+      module: {     //配置所有第三方loader模块
+        rules: [     //第三方模块的匹配规则
+            { test: /\.css$/, use: [ 'style-loader', 'css-loader' ] }
+        ]
+      }
+000000000000000000000000000000000000000000000000000000000000000000000000000      

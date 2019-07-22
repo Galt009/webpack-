@@ -1,0 +1,4 @@
+//打包bundle.js
+
+先全局安装npm install webpack-cli -g
+再webpack .\src\main.js -o .\dist\bundle.js --mode=development

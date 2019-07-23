@@ -1,0 +1,5 @@
+//默认情况下， webpack 无法处理 css 文件中的 url 地址，不管是图片还是字体库，只要是 url 地址，都处理不了
+此时需安装 url-loader
+命令行输入：cnpm i url-loader file-loader -D
+然后在 webpack 配置文件中的 module 中的 rules 里添加： { test: /\.(jpg|png|gif|bmp|jpeg)$/, use: 'url-loader' }
+完成

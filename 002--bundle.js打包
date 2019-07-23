@@ -1,4 +1,8 @@
-//打包bundle.js
-
-先全局安装npm install webpack-cli -g
-再webpack .\src\main.js -o .\dist\bundle.js --mode=development
+                                  ////打包bundle.js////
+1··  命令行输入：npm init -y //-y 代表不停的 yes ，如果根目录名字是中文，则输入：npm init，然后 enter ，输入名字
+2··  根目录创建：dist src 两个文件夹
+3··  在src文件夹里创建：index.html 和 main.js（项目的js入口文件）
+4··  先全局安装：cnpm install webpack-cli -g
+5··  再：webpack .\src\main.js -o .\dist\bundle.js --mode=development
+6··  再往 index.html 的头部里添加：<script src="../dist/bundle.js"></script>
+7··  至此 bundle.js 打包结束

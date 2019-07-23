@@ -1,13 +1,16 @@
-先 cnpm i webpack-dev-server -D 安装工具
-可这是会提示依赖webpack@^4.0.0 but none was installed
-所以   cnpm i webpack  安装这个
-再 cnpm i webpack-dev-server -D 就ok了
-00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-根目录建 webpack.config.js 
+                                           //////////自动打包//////////
+1··  先 cnpm i webpack-dev-server -D 安装工具
+
+2··  可这是会提示依赖webpack@^4.0.0 but none was installed
+
+3··  所以 cnpm i webpack  安装这个
+
+4··  再 cnpm i webpack-dev-server -D 就ok了
+
+5··  根目录建 webpack.config.js 
 
     //由于 webpack 是基于Node进行构建的，所以webpack的配置文件中，任何合法的Node代码都是支持的
     var path =  require('path')
-
     //当以命令行形式运行 webpack 或 webpack-dev-server 的时候，工具会发现，我们并没有提供要打包的文件的 入口 和 出口 文件，此时，工具会检查根目录中的配置文件，并读取这个文件，就拿到了导出的这个对象，进行打包构建
     module.exports = {
         entry: path.join(__dirname, './src/main.js'),//入口
@@ -16,32 +19,32 @@
             filename: 'bundle.js'//指定输出文件的名称
         }
     }
-00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-cmd 输入webpack 会提示：
-    WARNING in configuration
-    The 'mode' option has not been set, webpack will fallback to 'production' for this value. Set 'mode' option to 'development' or 'production' to enable defaults for each environment.
-    You can also set it to 'none' to disable any default behavior. Learn more: https://webpack.js.org/configuration/mode/
-       此时
-    打包的情况命令改为 webpack --mode development  //webpack4的最新打包命令
     
-往 package.josn 里的scripts里添加下面一行代码
-"dev": "webpack-dev-server --open --port 3000 --contentBase src --hot"
-                         自动打开浏览器
-                                    申请端口号
-                                                运行在src目录下
-                                                                实现热更新
-00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000                                                                
-npm run dev
-此时资源托管在根路径
-00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-安装 cnpm i html-webpack-plugin -D 工具
+6··  cmd 输入 webpack 会提示：
+        WARNING in configuration
+        The 'mode' option has not been set, webpack will fallback to 'production' for this value. Set 'mode' option to 'development' or 'production' to enable defaults for each environment.
+        You can also set it to 'none' to disable any default behavior. Learn more: https://webpack.js.org/configuration/mode/
+           此时
+        打包的情况命令改为 webpack --mode development  //webpack4的最新打包命令
+    
+        往 package.josn 里的scripts里添加下面一行代码
+        "dev": "webpack-dev-server --open --port 3000 --contentBase src --hot"
+                                 自动打开浏览器
+                                            申请端口号
+                                                        运行在src目录下
+                                                                        实现热更新
+                                                                
+7··  cmd 输入 npm run dev
+     此时资源托管在根路径
+     
+8··  安装 cnpm i html-webpack-plugin -D 工具
 
             //由于 webpack 是基于Node进行构建的，所以webpack的配置文件中，任何合法的Node代码都是支持的
             var path =  require('path')
 
-000000000000000            //在内存中生成一份，同时把自动打包好的bundle注入到页面底部
-000000000000000             //如果要配置插件，需要在导出的对象中，挂载一个 plugin 节点
-000000000000000             var htmlWebpackPlugin = require('html-webpack-plugin')
+            //在内存中生成一份，同时把自动打包好的bundle注入到页面底部
+            //如果要配置插件，需要在导出的对象中，挂载一个 plugin 节点
+            var htmlWebpackPlugin = require('html-webpack-plugin')           ////////////////////新增///////////////////////
 
             //当以命令行形式运行 webpack 或 webpack-dev-server 的时候，工具会发现，我们并没有提供要打包的文件的 入口 和 出口 文件，此时，工具会检查根目录中的配置文件，并读取这个文件，就拿到了导出的这个对象，进行打包构建
             module.exports = {
@@ -50,15 +53,17 @@ npm run dev
                     path: path.join(__dirname,'./dist'),//出口
                     filename: 'bundle.js'//指定输出文件的名称
                 },
-000000000000000                 plugins: [ //所有webpack插件的配置节点
-000000000000000                    new htmlWebpackPlugin({
-000000000000000                         template: path.join(__dirname, './src/index.html'), //指定模板文件路径
-000000000000000                         filename: 'index.html' //设置生成的内存页面的名称
+                plugins: [ //所有webpack插件的配置节点           ////////////////////新增///////////////////////                                    
+                    new htmlWebpackPlugin({
+                    template: path.join(__dirname, './src/index.html'), //指定模板文件路径
+                    filename: 'index.html' //设置生成的内存页面的名称
                     })
                 ]
             }
-00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-npm run dev 成功
+
+9··  npm run dev 成功
+
+10·· 若运行后报错，请查看你的index.html里头部的 <script src="../dist/bundle.js"></script> 是否存在，若存在，请注释或删除（因为再内存中已有一份bundle.js，且自动放置在body的底部）
       
 
                                      

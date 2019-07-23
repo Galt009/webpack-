@@ -1,0 +1,21 @@
+                                      ////////////webpack中babel的配置/////////////
+                                      
+1··  注意 现在babel-loader 已经更新到8  正确无报错: cnpm i babel-core babel-loader@7 babel-plugin-transform-runtime -D
+
+2··  cnpm i babel-preset-env babel-preset-stage-0 -D
+
+3··  在 webpack.config.js 添加：{ test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ }
+
+4··  新建 .babelrc ：
+      {
+          "presets": ["env", "stage-0"],
+          "plugins": ["transform-runtime"]
+      }
+      
+5··  main.js要处理的东西（例子）
+      class Person {
+          static info = { name: 'zs', age:20 }
+      }
+      console.log(Person.info)
+
+6··  遇到情况不对  就删除node_modules 再 cnpm install 再根据提示安装依赖，最后：cnpm i webpack 

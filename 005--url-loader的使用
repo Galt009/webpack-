@@ -1,19 +1,37 @@
                                           ////图片文件处理////                
-//默认情况下， webpack 无法处理 css 文件中的 url 地址，不管是图片还是字体库，只要是 url 地址，都处理不了
-此时需安装 url-loader
-命令行输入：cnpm i url-loader file-loader -D
-然后在 webpack 配置文件中的 module 中的 rules 里添加： { test: /\.(jpg|png|gif|bmp|jpeg)$/, use: 'url-loader' }
-完成
-00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-{ test: /\.(jpg|png|gif|bmp|jpeg)$/, use: 'url-loader?limit=图片字节数' }    //limit给定的值，是图片的大小，单位是byte，如果
-我们引用的图片大于或等于给定的limit值，则不会被转换为base64格式的字符串。
-00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-用下面这个 可以保持原名 原格式 并且前面加了哈希值 保证了文件不重名
-{ test: /\.(jpg|png|gif|bmp|jpeg)$/, use: 'url-loader?limit=图片字节数&name=[hash:8]-[name].[ext]' }
-00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+1··  //默认情况下， webpack 无法处理 css 文件中的 url 地址，不管是图片还是字体库，只要是 url 地址，都处理不了
+       此时需安装 url-loader
+       
+2··  命令行输入：cnpm i url-loader file-loader -D
+
+3··  然后在 webpack 配置文件中的 module 中的 rules 里添加： { test: /\.(jpg|png|gif|bmp|jpeg)$/, use: 'url-loader' }
+
+4··  完成
+
+5··  { test: /\.(jpg|png|gif|bmp|jpeg)$/, use: 'url-loader?limit=图片字节数' }    //limit给定的值，是图片的大小，单位是byte，如果
+     我们引用的图片大于或等于给定的limit值，则不会被转换为base64格式的字符串。
+
+6··  用下面这个 可以保持原名 原格式 并且前面加了哈希值 保证了文件不重名
+     { test: /\.(jpg|png|gif|bmp|jpeg)$/, use: 'url-loader?limit=图片字节数&name=[hash:8]-[name].[ext]' }
+
+
                                           ////字体文件处理////
-往main.js里添加： import 'bootstrap/dist/css/bootstrap.css'    //字体样式文件路径
-然后在 webpack 配置文件中的 module 中的 rules 里添加：{ test: /\.(ttf|eot|svg|woff|woff2)$/, use: 'url-loader' }
+1··  cnpm i bootstrap -S    //安装bootst 
+     根据提示安装依赖（jquery不要带版本号）
+     
+2··  html中引入：<link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+     此时检查 package.js 中的 scripts 的 dev 里的托管目录，最好不要（这样默认在更目录）
+     
+3··  由于安装的 bootstrap 是4.x版本的，图标已分离出来，需单独安装 open-iconic ：cnpm i https://github.com/iconic/open-iconic.git -D 
+
+4··  在main.js中引入
+     import 'bootstrap/dist/css/bootstrap.css'
+     import 'open-iconic/font/css/open-iconic-bootstrap.css'
+     
+5··  在webpack.config.js中配置
+     //处理字体文件
+     {test:/\.(ttf|eot|svg|woff|woff2|otf)$/, use: 'url-loader'}
+     
+6··  在html中引用：<span class="oi" data-glyph="icon-name" title="icon name" aria-hidden="true"></span> 
+                  <span class="oi oi-account-login" aria-hidden="true"></span>
+                  <span class="oi oi-名字" aria-hidden="true"></span>

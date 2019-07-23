@@ -1,3 +1,3 @@
-先 npm i nrm 全局安装 nrm 包
-再 nrm ls 查看当前的镜像地址
-nrm use xxx  选择镜像地址
+1··  先 npm i nrm 全局安装 nrm 包
+2··  再 nrm ls 查看当前的镜像地址
+3··  nrm use xxx  选择镜像地址

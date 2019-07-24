@@ -1,0 +1,2 @@
+001··  在 main.js 中添加：import Vue form '../node_modules/vue/dist/vue.js
+002··  安装 vue：npm i vue -S

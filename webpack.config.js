@@ -22,7 +22,8 @@ module.exports = {
             { test: /\.scss$/, use: [ 'style-loader', 'css-loader', 'sass-loader' ] },
             { test: /\.(jpg|png|gif|bmp|jpeg)$/, use: 'url-loader?limit=6000&name=[hash:8]-[name].[ext]' },
             //处理字体文件
-            {test:/\.(ttf|eot|svg|woff|woff2|otf)$/, use: 'url-loader'} 
+            { test:/\.(ttf|eot|svg|woff|woff2|otf)$/, use: 'url-loader'},
+            { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ }
         ]
     }
 }

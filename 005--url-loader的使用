@@ -32,6 +32,9 @@
      //处理字体文件
      {test:/\.(ttf|eot|svg|woff|woff2|otf)$/, use: 'url-loader'}
      
-6··  在html中引用：<span class="oi" data-glyph="icon-name" title="icon name" aria-hidden="true"></span> 
-                  <span class="oi oi-account-login" aria-hidden="true"></span>
+6··  Bootstrap 4.X版本的图标显示不出来问题，在这里记录下来
+     因为4.X版本Boostrap把icon分离出来作为一个单独的项目open-iconic
+     这个是不能引用bootstrap3中的组件了，可以去https://useiconic.com/open找自己想要的图标
+     在html中引用：<span class="oi" data-glyph="icon-name" title="icon name" aria-hidden="true"></span> 
+     *************<span class="oi oi-account-login" aria-hidden="true"></span>
                   <span class="oi oi-名字" aria-hidden="true"></span>

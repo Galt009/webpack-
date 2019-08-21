@@ -1,2 +1,12 @@
-001··  在 main.js 中添加：import Vue form '../node_modules/vue/dist/vue.js
+001··  在 main.js 中添加：import Vue form '../node_modules/vue/dist/vue.js'
 002··  安装 vue：npm i vue -S
+
+或则
+在 main.js 中添加：import Vue form 'vue'
+在：webpack.config.js 中添加
+ resolve: {
+        alias: { // 修改 Vue 被导入时候的包的路径
+            "vue$": "vue/dist/vue.js添加"
+        }
+    }
+    

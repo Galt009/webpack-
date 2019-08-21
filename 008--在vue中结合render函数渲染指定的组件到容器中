@@ -1,0 +1,16 @@
+vue-loader 是要依赖 vue 的，所以先下载 vue
+
+npm i vue -S 
+cnpm i vue-loader vue-template-compiler -D
+
+webpack.config.js 中配置相关信息
+module rules中添加:
+{ test: /\.vue$/, use: 'vue-loader' } // 处理 .vue 文件的 loader
+
+vue-loader@15.*之后除了必须带有VueLoaderPlugin
+
+解决方案： 
+需要使用插件VueLoaderPlugin 
+在webpack.config.js里用const VueLoaderPlugin = require('vue-loader/lib/plugin')引入， 
+然后在module.exports对象里添加plugins:[new VueLoaderPlugin()] 
+

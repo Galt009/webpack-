@@ -1,0 +1,11 @@
+安装：
+cnpm i mint-ui -S
+
+main.js 里写入：
+// 导入所有的 MintUI 组件
+// 导入 MintUI 
+import MintUI from 'mint-ui'
+// 这里可以省略 node_modules 这一层目录
+import 'mint-ui/lib/style.css'
+// 将 MintUI 安装到 Vue 中
+Vue.use(MintUI)

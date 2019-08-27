@@ -1,0 +1,44 @@
+main.js写入：
+import 'open-iconic/font/css/open-iconic-bootstrap.min.css'
+import './css/app.css'
+
+
+app.vue组件中：
+<script>
+// 导入 Toast 组件
+import { Toast } from "mint-ui"
+import { setTimeout } from 'timers';
+
+export default {
+    data(){
+        return {
+            instance: null
+        }
+    },
+    created() {
+        this.getList();
+    },
+    methods:{
+        getList() {
+            this.show();
+            setTimeout(() => {
+                this.instance.close();
+            },3000);
+        },
+        show(){
+            this.instance = Toast({
+                message: '这是消息',
+                duration: -1, // 如果是 -1 ，则弹出之后不消失
+                position: 'top', // 字符串形式
+                iconClass: "oi oi-camera-slr",
+                className: 'mytoast' // 自定义 Toast 的样式，需要自己提供一个类名
+            });
+        }
+    }
+}
+</script>
+
+app.css:
+.mytoast i{
+    color: red !important;
+}
